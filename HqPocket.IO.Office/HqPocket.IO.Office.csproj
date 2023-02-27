@@ -10,7 +10,8 @@
 		<Authors>HqPocket</Authors>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>		
+		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
 		<Authors>ZHQ</Authors>
 		<Version>6.0.0</Version>
 	</PropertyGroup>

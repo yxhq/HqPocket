@@ -11,7 +11,8 @@
 		<Authors>HqPocket</Authors>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<RootNamespace>HqPocket.Pockets</RootNamespace>
+		<RootNamespace>HqPocket.Pockets</RootNamespace>		
+		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
 		<Authors>ZHQ</Authors>
 		<Version>6.0.0</Version>
 	</PropertyGroup>
