@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyVersion>6.0.0.0</AssemblyVersion>
+		<FileVersion>6.0.0.0</FileVersion>
+		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
+		<RootNamespace>HqPocket.Extensions.Hosting</RootNamespace>
+		<Authors>HqPocket</Authors>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Authors>ZHQ</Authors>
+		<Version>6.0.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\HqPocket.Extensions.Dialoging.Wpf\HqPocket.Extensions.Dialoging.Wpf.csproj" />
+		<ProjectReference Include="..\HqPocket.Extensions.Events\HqPocket.Extensions.Events.csproj" />
+		<ProjectReference Include="..\HqPocket.Extensions.Localization.Wpf\HqPocket.Extensions.Localization.Wpf.csproj" />
+		<ProjectReference Include="..\HqPocket.Extensions.Options.Json\HqPocket.Extensions.Options.Json.csproj" />
+		<ProjectReference Include="..\HqPocket.Extensions.Plugins\HqPocket.Extensions.Plugins.csproj" />
+		<ProjectReference Include="..\HqPocket.Extensions.Regioning.Wpf\HqPocket.Extensions.Regioning.Wpf.csproj" />
+		<ProjectReference Include="..\HqPocket.Core\HqPocket.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

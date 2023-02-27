@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<RootNamespace>HqPocket.Wpf</RootNamespace>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyVersion>6.0.0.0</AssemblyVersion>
+		<FileVersion>6.0.0.0</FileVersion>
+		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
+		<Authors>HqPocket</Authors>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Authors>ZHQ</Authors>
+		<Version>6.0.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\HqPocket.Core\HqPocket.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Collections\" />
+	</ItemGroup>
+
+</Project>
