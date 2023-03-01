@@ -6,15 +6,16 @@
 		<UseWPF>true</UseWPF>
 		<Nullable>enable</Nullable>
 		<SignAssembly>true</SignAssembly>
-		<AssemblyVersion>6.0.0.0</AssemblyVersion>
-		<FileVersion>6.0.0.0</FileVersion>
+		<AssemblyVersion>6.0.1.0</AssemblyVersion>
+		<FileVersion>6.0.1.0</FileVersion>
 		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
 		<Authors>HqPocket</Authors>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>		
 		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
 		<Authors>ZHQ</Authors>
-		<Version>6.0.0</Version>
+		<Version>6.0.1</Version>
+		<PackageProjectUrl>https://github.com/yxhq/HqPocket</PackageProjectUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

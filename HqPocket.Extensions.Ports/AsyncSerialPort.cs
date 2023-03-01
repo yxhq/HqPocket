@@ -110,12 +110,23 @@ public class AsyncSerialPort : IAsyncSerialPort
     {
         if (sender is SerialPort port)
         {
-            int bytesToRead = port.BytesToRead;
-            byte[] readBuffer = new byte[bytesToRead];
-            int readCount = port.Read(readBuffer, 0, bytesToRead);
+            int readCount = 0;
+            byte[]? readBuffer = null;
+
+            try
+            {
+                int bytesToRead = port.BytesToRead;
+                readBuffer = new byte[bytesToRead];
+                readCount = port.Read(readBuffer, 0, bytesToRead);
+            }
+            catch (InvalidOperationException)   // The port is closed.
+            {
+                // do nothing
+            }
+
             if (readCount > 0)
             {
-                _receivedBytesQueue.Enqueue(readBuffer);
+                _receivedBytesQueue.Enqueue(readBuffer!);
 
                 if (_receiveTask.IsCompleted)
                 {
