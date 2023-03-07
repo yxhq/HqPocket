@@ -49,7 +49,6 @@ public class Dialoger : IDialoger
         var ownerWindow = (dialogWindow as FrameworkElement)?.GetOwnerWindow();
         ConfigureOwner(dialogWindow, ownerWindow);
 
-        dialogWindow.Initialize();
         windowSetupAction?.Invoke(dialogWindow);
 
         viewModel.RequestCloseDialog += ViewModel_RequestClose;
