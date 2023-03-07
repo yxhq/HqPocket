@@ -25,7 +25,7 @@ public interface IAsyncSerialPort
     /// </summary>
     event EventHandler? Closed;
 
-    SerialPort SerialPort { get; }
+    SerialPort? SerialPort { get; }
     bool DtrEnable { get; set; }
     bool RtsEnable { get; set; }
     int DataBits { get; set; }
@@ -33,6 +33,8 @@ public interface IAsyncSerialPort
     StopBits StopBits { get; set; }
     Parity Parity { get; set; }
     int BaudRate { get; set; }
+    int ReadBufferSize { get; set; }
+    int WriteBufferSize { get; set; }
     bool IsOpen { get; }
     string PortName { get; set; }
     void Open();
