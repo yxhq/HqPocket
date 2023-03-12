@@ -15,6 +15,7 @@
 		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
 		<Authors>ZHQ</Authors>
 		<Version>6.0.1</Version>
+		<PackageOutputPath>..\..\HqPackages</PackageOutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

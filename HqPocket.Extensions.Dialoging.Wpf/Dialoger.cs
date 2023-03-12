@@ -5,6 +5,7 @@ using HqPocket.Wpf.Windows;
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -86,6 +87,8 @@ public class Dialoger : IDialoger
                 VerticalAlignment = VerticalAlignment.Center
             };
 
+            var methods = viewModel.GetType().GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
             foreach (var command in commands)
             {
                 Button button = new()
@@ -102,8 +105,8 @@ public class Dialoger : IDialoger
                     bool allowCloseDialog = true;
                     if (command.Name is not null)
                     {
-                        var methodInfo = vm.GetType().GetMethod($"On{command.Name}", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                        if (methodInfo is not null && methodInfo.Invoke(vm, null) is bool b)
+                        var onMethod = methods.SingleOrDefault(m => m.Name == $"On{command.Name}");
+                        if (onMethod?.GetParameters().Length == 0 && onMethod.Invoke(vm, null) is bool b)
                         {
                             allowCloseDialog = b; //此处决定是否调用 dialogWindow.Close()
                         }
@@ -112,6 +115,15 @@ public class Dialoger : IDialoger
                     {
                         command.Execute?.Invoke(vm);
                         dialogWindow?.Close();
+                    }
+                }
+
+                if (command.CanExecute is null)
+                {
+                    var canMethod = methods.SingleOrDefault(m => m.Name == $"Can{command.Name}");
+                    if (canMethod?.GetParameters().Length == 0 && canMethod.ReturnType == typeof(bool))
+                    {
+                        command.CanExecute = _ => (bool)canMethod.Invoke(viewModel, null)!;
                     }
                 }
 

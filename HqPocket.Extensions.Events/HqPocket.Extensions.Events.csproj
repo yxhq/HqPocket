@@ -15,6 +15,7 @@
 		<Version>6.0.1</Version>
 		<PackageProjectUrl>https://github.com/yxhq/HqPocket</PackageProjectUrl>
 		<Description>EventAggregator，referenced from Prism：https://github.com/PrismLibrary/Prism</Description>
+		<PackageOutputPath>..\..\HqPackages</PackageOutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

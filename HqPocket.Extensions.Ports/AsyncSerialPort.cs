@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,12 +62,11 @@ public class AsyncSerialPort : IAsyncSerialPort
         OnOpening(e);
         if (e.Cancel) return;
 
-        SerialPort.Open();
-
         _receiveTaskCts = new();
-        Task.Run(ProcessReceivedBytes, _receiveTaskCts.Token);
-        SerialPort.DataReceived += SerialPort_DataReceived;
+        Task.Run(()=>ProcessReceivedBytes(_receiveTaskCts.Token), _receiveTaskCts.Token);
 
+        SerialPort.DataReceived += SerialPort_DataReceived;
+        SerialPort.Open();
         OnOpened(EventArgs.Empty);
     }
 
@@ -81,7 +81,6 @@ public class AsyncSerialPort : IAsyncSerialPort
         SerialPort = null;
 
         _receiveTaskCts?.Cancel();
-
         _receivedBytesQueue.Clear();
         OnClosed(EventArgs.Empty);
     }
@@ -107,13 +106,26 @@ public class AsyncSerialPort : IAsyncSerialPort
         }
     }
 
-    private void ProcessReceivedBytes()
+    private void ProcessReceivedBytes(CancellationToken token)
     {
-        while (_receiveTaskCts is not null && !_receiveTaskCts.IsCancellationRequested)
+        while (!token.IsCancellationRequested)
         {
-            if (_receivedBytesQueue.TryDequeue(out var receiveBytesBuffer))
+            if (_receivedBytesQueue.IsEmpty)
             {
-                OnBytesReceived(receiveBytesBuffer);
+                try
+                {
+                    Task.Delay(1, token).Wait(token);
+                }
+                catch (OperationCanceledException)
+                {
+                }
+            }
+            else
+            {
+                while (_receivedBytesQueue.TryDequeue(out var receiveBytesBuffer))
+                {
+                    OnBytesReceived(receiveBytesBuffer);
+                }
             }
         }
         _receiveTaskCts?.Dispose();

@@ -24,6 +24,10 @@ public class BooleanToObjectConverter : IValueConverter
 
     public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
+        if (value is null) return NullObject;
+        if (value == TrueObject) return true;
+        if (value == FalseObject) return false;
+
         return DependencyProperty.UnsetValue;
     }
 }
