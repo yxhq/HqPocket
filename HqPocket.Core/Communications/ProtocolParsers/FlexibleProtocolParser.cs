@@ -63,11 +63,11 @@ public class FlexibleProtocolParser : ProtocolParserBase<FlexibleProtocol>
                     Protocol.Data![Index - HeadLength - 4] = buf;
                 }
             }
-            else if (Index < HeadToCheckBytesLength)   // 仅在 Has CheckBytes 时运行
+            else if (Index < HeadToCheckBytesLength && Protocol.HasCheckBytes)   // 仅在 Has CheckBytes 时运行
             {
                 Protocol.CheckBytes![Index - HeadToDataLength] = buf;                    
             }
-            else if (Index < HeadToTailLength)  // 仅在 Has Tail 时运行
+            else if (Index < HeadToTailLength && Protocol.HasTail)  // 仅在 Has Tail 时运行
             {
                 if (Protocol.Tail![Index - HeadToCheckBytesLength] != buf)
                 {

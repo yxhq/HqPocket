@@ -49,11 +49,6 @@ public abstract class ProtocolBase : IProtocol
         {
             Tail = tail;
             HasTail = true;
-
-            if (CheckMethod is null)
-            {
-                throw new ArgumentNullException(nameof(checkMethod), "有帧尾时必须有校验字节");
-            }
         }
     }
 
