@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.ComponentModel;
 using System.Linq;
 
@@ -6,18 +7,24 @@ namespace HqPocket.Extensions.Options;
 
 public static class WritableOptionsExtensions
 {
-    public static void Write<TOptions>(this IWritableOptions<TOptions> options) where TOptions : class
+    public static void Write<TOptions>(this IOptions<TOptions> options, string name) where TOptions : class
     {
-        Ioc.GetRequiredService<IOptionsWriter>().Write();
+        IOptionsWriter.Default.Add(options.Value, name);
+        IOptionsWriter.Default.Write();
     }
 
-    public static void Bind<TOptions, TTarget>(this IWritableOptions<TOptions> options, TTarget target, string propertyName)
+    public static void Write<TOptions>(this IOptions<TOptions> options) where TOptions : class
+    {
+        Write(options, typeof(TOptions).Name);
+    }
+
+    public static void Bind<TOptions, TTarget>(this IOptions<TOptions> options, TTarget target, string propertyName)
        where TOptions : class where TTarget : INotifyPropertyChanged
     {
         options.Bind(target, propertyName, propertyName);
     }
 
-    public static void Bind<TOptions, TTarget>(this IWritableOptions<TOptions> options, TTarget target, string sourcePropertyName, string targetPropertyName)
+    public static void Bind<TOptions, TTarget>(this IOptions<TOptions> options, TTarget target, string sourcePropertyName, string targetPropertyName)
        where TOptions : class where TTarget : INotifyPropertyChanged
     {
         var sourcePropertyInfo = typeof(TOptions).GetProperty(sourcePropertyName);
@@ -39,7 +46,7 @@ public static class WritableOptionsExtensions
         }
     }
 
-    public static void Bind<TOptions, TTarget>(this IWritableOptions<TOptions> options, TTarget target)
+    public static void Bind<TOptions, TTarget>(this IOptions<TOptions> options, TTarget target)
        where TOptions : class where TTarget : INotifyPropertyChanged
     {
         foreach (var sourcePropertyInfo in typeof(TOptions).GetProperties())

@@ -4,7 +4,6 @@ using HqPocket.Extensions.Regioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using System;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -109,7 +108,7 @@ public abstract class HqApplication : Application
 
     protected virtual void BeforeMainWindowInitialized(IServiceProvider serviceProvider)
     {
-
+        
     }
 
     protected virtual void AfterMainWindowInitialized(IServiceProvider serviceProvider)

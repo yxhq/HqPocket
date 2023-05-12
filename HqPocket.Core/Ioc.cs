@@ -43,11 +43,7 @@ public class Ioc
 
     public static object GetRequiredService(Type serviceType)
     {
-        var service = GetService(serviceType);
-        if (service is null)
-        {
-            throw new InvalidOperationException($"The Required service type {serviceType.Name} was not registered.");
-        }
+        var service = GetService(serviceType) ?? throw new InvalidOperationException($"The Required service type {serviceType.Name} was not registered.");
         return service;
     }
 
@@ -58,11 +54,7 @@ public class Ioc
 
     public static T GetRequiredService<T>()
     {
-        T? service = GetService<T>();
-        if (service is null)
-        {
-            throw new InvalidOperationException($"The Required service type {typeof(T).Name} was not registered.");
-        }
+        T? service = GetService<T>() ?? throw new InvalidOperationException($"The Required service type {typeof(T).Name} was not registered.");
         return service;
     }
 }

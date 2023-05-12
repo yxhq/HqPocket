@@ -7,6 +7,8 @@ namespace HqPocket.Extensions.Ports.Helpers;
 
 public static class SerialPortHelper
 {
+    public const string SerialPortCommunicatorName = "COM";
+
     public static string[] GetSortedPortNames()
     {
         var serialPortNames = SerialPort.GetPortNames();

@@ -15,9 +15,9 @@ public abstract class OptionsWriter : IOptionsWriter
         _optionsFactory = Load(_filePhysicalPath) ?? new Dictionary<string, object?>();
     }
 
-    public virtual void Add<TOptions>(TOptions options)
+    public virtual void Add<TOptions>(TOptions options, string name)
     {
-        _optionsFactory[typeof(TOptions).Name] = options;
+        _optionsFactory[name] = options;
     }
 
     public void Write()

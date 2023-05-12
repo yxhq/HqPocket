@@ -1,4 +1,8 @@
 .vs
 bin
 obj
+HqPocket.DevExpress.sln
+HqPocket.Extensions.DevExpress
+HqPocket.Extensions.DevExpress.Bars
+HqPocket.DevExpress.Test
 

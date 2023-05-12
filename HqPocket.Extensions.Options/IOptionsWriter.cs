@@ -2,6 +2,7 @@
 
 public interface IOptionsWriter
 {
-    void Add<TOptions>(TOptions options);
+    static IOptionsWriter Default => Ioc.GetRequiredService<IOptionsWriter>();
+    void Add<TOptions>(TOptions options, string name);
     void Write();
 }

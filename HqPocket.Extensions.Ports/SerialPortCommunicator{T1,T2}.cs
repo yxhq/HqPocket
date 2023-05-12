@@ -1,15 +1,19 @@
 ﻿using HqPocket.Communications;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace HqPocket.Extensions.Ports;
 
-public class ProtocolDataSerialPort<TProtocol, TData> : ProtocolSerialPort<TProtocol>, IProtocolDataSerialPort<TProtocol, TData>
+public class SerialPortCommunicator<TProtocol, TData> : SerialPortCommunicator<TProtocol>, ICommunicator<TProtocol, TData>
     where TProtocol : IProtocol
     where TData : class
 {
     public event EventHandler<TData>? DataCreated;
     public Func<TProtocol, TData>? DataCreator { get; set; }
 
+    public SerialPortCommunicator(IOptions<SerialPortCommunicatorOptions> options) : base(options)
+    {
+    }
 
     protected override void OnReceiveParseSucceed(TProtocol protocol)
     {

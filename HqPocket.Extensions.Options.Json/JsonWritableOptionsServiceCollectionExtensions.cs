@@ -15,9 +15,9 @@ public static class JsonWritableOptionsServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        services.AddWritableOptions();
         services.AddOptions<JsonSerializerOptions>();
         services.TryAddSingleton<IOptionsWriter, JsonOptionsWriter>();
+
         return services;
     }
 
@@ -28,6 +28,7 @@ public static class JsonWritableOptionsServiceCollectionExtensions
 
         services.AddJsonOptionsWriter();
         services.Configure(setupAction);
+
         return services;
     }
 }

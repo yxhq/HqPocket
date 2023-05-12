@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Microsoft.Extensions.Configuration;
 
-public static class WritableConfigurationExtensions
+public static class WritableOptionsConfigurationExtensions
 {
     private const string FilePhysicalPathKey = "HQPOCKET_WritableOptionsFile";
     public static IConfigurationBuilder SetWritable(this IConfigurationBuilder builder, string path)
