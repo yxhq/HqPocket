@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyVersion>6.2.2.0</AssemblyVersion>
+		<FileVersion>6.2.2.0</FileVersion>
+		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
+		<Authors>HqPocket</Authors>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
+		<Authors>ZHQ</Authors>
+		<Version>6.2.2</Version>
+		<PackageProjectUrl>https://github.com/yxhq/HqPocket</PackageProjectUrl>
+		<Description>Communications</Description>
+		<PackageOutputPath>..\..\HqPackages</PackageOutputPath>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<!--此处优化会有问题-->
+		<Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <WarningLevel>6</WarningLevel>
+	  <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Link="LICENSE">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HqPocket.Core\HqPocket.Core.csproj" />
+  </ItemGroup>
+
+</Project>

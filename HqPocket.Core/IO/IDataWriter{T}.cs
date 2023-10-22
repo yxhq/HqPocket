@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HqPocket.IO;
 
-public interface IDataWriter<in T> : IDisposable where T : class, new()
+public interface IDataWriter<in T> : IDisposable where T : class
 {
     /// <summary>
     /// 写入标题行（必须为第1行，且只有1行），默认根据typeof(T)自动生成headLine

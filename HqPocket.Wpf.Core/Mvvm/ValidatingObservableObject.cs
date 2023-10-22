@@ -1,5 +1,4 @@
-﻿using HqPocket.Mvvm;
-
+﻿using HqPocket.Mvvm.ComponentModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,9 +27,9 @@ public class ValidatingObservableObject : ObservableObject, INotifyDataErrorInfo
 
     public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
-    protected virtual bool SetAndValidate<T>(ref T storage, T value, [CallerMemberName] string? propertyName = null)
+    protected virtual bool SetAndValidate<T>(ref T storage, T value, Action? changedCallback = null, [CallerMemberName] string? propertyName = null)
     {
-        var proertyChanged = SetValue(ref storage, value, propertyName);
+        var proertyChanged = SetValue(ref storage, value, changedCallback, propertyName);
         if (proertyChanged)
         {
             ValidateProperty(value, propertyName);
@@ -38,22 +37,12 @@ public class ValidatingObservableObject : ObservableObject, INotifyDataErrorInfo
         return proertyChanged;
     }
 
-    protected virtual bool SetAndValidate<T>(ref T storage, T value, Action<T> onChanged, [CallerMemberName] string? propertyName = null)
+    protected virtual bool SetAndValidate<T>(T oldValue, T newValue, Action<T> callback, Action? changedCallback = null, [CallerMemberName] string? propertyName = null)
     {
-        var proertyChanged = SetValue(ref storage, value, onChanged, propertyName);
+        var proertyChanged = SetValue(oldValue, newValue, callback, changedCallback, propertyName);
         if (proertyChanged)
         {
-            ValidateProperty(value, propertyName);
-        }
-        return proertyChanged;
-    }
-
-    protected virtual bool SetAndValidate<T>(ref T storage, T value, Action<T> onChanging, Action<T> onChanged, [CallerMemberName] string? propertyName = null)
-    {
-        var proertyChanged = SetValue(ref storage, value, onChanging, onChanged, propertyName);
-        if (proertyChanged)
-        {
-            ValidateProperty(value, propertyName);
+            ValidateProperty(newValue, propertyName);
         }
         return proertyChanged;
     }

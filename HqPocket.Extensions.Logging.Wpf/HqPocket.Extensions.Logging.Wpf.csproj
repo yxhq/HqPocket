@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyVersion>6.2.1.0</AssemblyVersion>
+		<FileVersion>6.2.1.0</FileVersion>
+		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
+		<RootNamespace>HqPocket.Extensions.Logging</RootNamespace>
+		<Authors>HqPocket</Authors>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
+		<Authors>ZHQ</Authors>
+		<Version>6.2.1</Version>
+		<PackageProjectUrl>https://github.com/yxhq/HqPocket</PackageProjectUrl>
+		<Description>WPF Logging ObservableCollection</Description>
+		<PackageOutputPath>..\..\HqPackages</PackageOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE" Link="LICENSE">
+	    <PackagePath>\</PackagePath>
+	    <Pack>True</Pack>
+	  </None>
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HqPocket.Wpf.Core\HqPocket.Wpf.Core.csproj" />
+  </ItemGroup>
+
+</Project>

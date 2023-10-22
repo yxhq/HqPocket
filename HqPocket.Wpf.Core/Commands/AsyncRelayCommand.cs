@@ -1,4 +1,4 @@
-﻿using HqPocket.Mvvm;
+﻿using HqPocket.Mvvm.ComponentModel;
 
 using System;
 using System.ComponentModel;

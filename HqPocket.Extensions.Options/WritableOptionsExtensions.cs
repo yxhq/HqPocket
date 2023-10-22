@@ -7,15 +7,30 @@ namespace HqPocket.Extensions.Options;
 
 public static class WritableOptionsExtensions
 {
-    public static void Write<TOptions>(this IOptions<TOptions> options, string name) where TOptions : class
+    public static void Update<TOptions>(this IOptions<TOptions> options, string name, TOptions? instance = null) where TOptions : class
     {
-        IOptionsWriter.Default.Add(options.Value, name);
+        IOptionsWriter.Default.Add(instance ?? options.Value, name);
+    }
+
+    public static void Update<TOptions>(this IOptions<TOptions> options, TOptions? instance = null) where TOptions : class
+    {
+        Update(options, typeof(TOptions).Name, instance);
+    }
+
+    public static void Write<TOptions>(this IOptions<TOptions> _) where TOptions : class
+    {
         IOptionsWriter.Default.Write();
     }
 
-    public static void Write<TOptions>(this IOptions<TOptions> options) where TOptions : class
+    public static void UpdateAndWrite<TOptions>(this IOptions<TOptions> options, string name, TOptions? instance = null) where TOptions : class
     {
-        Write(options, typeof(TOptions).Name);
+        Update(options, name, instance);
+        Write(options);
+    }
+
+    public static void UpdateAndWrite<TOptions>(this IOptions<TOptions> options, TOptions? instance = null) where TOptions : class
+    {
+        UpdateAndWrite(options, typeof(TOptions).Name, instance);
     }
 
     public static void Bind<TOptions, TTarget>(this IOptions<TOptions> options, TTarget target, string propertyName)

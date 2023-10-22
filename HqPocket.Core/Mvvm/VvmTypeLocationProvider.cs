@@ -52,11 +52,8 @@ public class VvmTypeLocationProvider
         }
 
         Type? resultType = type.Assembly.GetType(resultTypeName); //Type.GetType()只能查找当前程序集，在Plugin中无法使用
-        if (resultType is null)
-        {
-            throw new ArgumentException($"Can't find type '{resultTypeName}'.");
-        }
-        return resultType;
+
+        return resultType is null ? throw new ArgumentException($"Can't find type '{resultTypeName}'.") : resultType;
     }
 
     public static string GetViewModelTypeName(string viewTypeName)

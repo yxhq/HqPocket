@@ -1,0 +1,17 @@
+﻿<Window x:Class=" HqPocket.Test.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:hq="http://hqpocket.com"
+        xmlns:local="clr-namespace:HqPocket.Test"
+        Title="MainWindow"
+        Width="800" Height="450"
+        hq:ViewModelLocator.AutoWireViewModel="True">
+
+    <Window.Resources>
+        <Style x:Key="MainRegionHeaderStyle" TargetType="{x:Type TabItem}">
+            <Setter Property="Header" Value="{hq:ViewLocalizer Title}" />
+        </Style>
+    </Window.Resources>
+
+    <TabControl hq:RegionManager.RegionName="{x:Static local:RegionNames.MainRegionName}" ItemContainerStyle="{StaticResource MainRegionHeaderStyle}" />
+</Window>

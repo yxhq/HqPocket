@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace HqPocket.IO;
 
-public abstract class DataReaderWriterBase<T> where T : class, new()
+public abstract class DataReaderWriterBase<T> where T : class
 {
     protected string FileName { get; }
     protected IList<ReadWriteItem> ReadWriteItems { get; }

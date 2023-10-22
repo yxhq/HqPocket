@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
 using System.Windows;
+using System;
 
 namespace HqPocket.Extensions.Localization;
 
@@ -21,15 +22,20 @@ public class Localizer
         }
     }
 
-    public static string GetString<T>(string name) => _localizerFactory.Create(typeof(T))[name].Value;
+    public static string GetString(Type viewType, string name) => _localizerFactory.Create(viewType)[name].Value;
 
-    public static void Bind<T>(DependencyObject dependencyObject, DependencyProperty dependencyProperty, string name)
+    public static string GetString<T>(string name) => GetString(typeof(T), name);
+
+    public static void Bind(Type resourceType, DependencyObject dependencyObject, DependencyProperty dependencyProperty, string name)
     {
-        var localizer = _localizerFactory.Create(typeof(T));
-        BindingOperations.SetBinding(dependencyObject, dependencyProperty, new Binding($"[{name}]")
+        var localizer = _localizerFactory.Create(resourceType);
+        BindingOperations.SetBinding(dependencyObject, dependencyProperty, new Binding($"[{name}].Value")
         {
             Source = localizer,
             Mode = BindingMode.OneWay
         });
     }
+
+    public static void Bind<TResource>(DependencyObject dependencyObject, DependencyProperty dependencyProperty, string name)
+        => Bind(typeof(TResource), dependencyObject, dependencyProperty, name);
 }

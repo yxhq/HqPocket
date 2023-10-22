@@ -5,8 +5,8 @@
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
 		<SignAssembly>true</SignAssembly>
-		<AssemblyVersion>6.1.0.0</AssemblyVersion>
-		<FileVersion>6.1.0.0</FileVersion>
+		<AssemblyVersion>6.2.1.0</AssemblyVersion>
+		<FileVersion>6.2.1.0</FileVersion>
 		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
 		<RootNamespace>HqPocket.Extensions.Localization</RootNamespace>
 		<Authors>HqPocket</Authors>
@@ -14,7 +14,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
 		<Authors>ZHQ</Authors>
-		<Version>6.1.0</Version>
+		<Version>6.2.1</Version>
 		<PackageProjectUrl>https://github.com/yxhq/HqPocket</PackageProjectUrl>
 		<Description>WPF Localization</Description>
 		<PackageOutputPath>..\..\HqPackages</PackageOutputPath>

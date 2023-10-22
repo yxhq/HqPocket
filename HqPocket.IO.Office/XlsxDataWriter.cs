@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HqPocket.IO.Office;
 
-public class XlsxDataWriter<T> : DataReaderWriterBase<T>, IDataWriter<T>, IDisposable where T : class, new()
+public class XlsxDataWriter<T> : DataReaderWriterBase<T>, IDataWriter<T>, IDisposable where T : class
 {
     protected string WorkSheetName { get; }
     protected ExcelPackage ExcelPackage { get; }

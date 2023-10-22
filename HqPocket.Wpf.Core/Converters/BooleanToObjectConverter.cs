@@ -6,11 +6,35 @@ using System.Windows.Data;
 namespace HqPocket.Wpf.Converters;
 
 [ValueConversion(typeof(bool), typeof(object))]
-public class BooleanToObjectConverter : IValueConverter
+public class BooleanToObjectConverter :DependencyObject, IValueConverter
 {
-    public object? TrueObject { get; set; }
-    public object? FalseObject { get; set; }
-    public object? NullObject { get; set; }
+
+    public static readonly DependencyProperty TrueObjectProperty =
+        DependencyProperty.Register(nameof(TrueObject), typeof(object), typeof(BooleanToObjectConverter), new PropertyMetadata(default));
+
+    public object TrueObject
+    {
+        get => (object)GetValue(TrueObjectProperty);
+        set => SetValue(TrueObjectProperty, value);
+    }
+
+    public static readonly DependencyProperty FalseObjectProperty =
+        DependencyProperty.Register(nameof(FalseObject), typeof(object), typeof(BooleanToObjectConverter), new PropertyMetadata(default));
+
+    public object FalseObject
+    {
+        get => (object)GetValue(FalseObjectProperty);
+        set => SetValue(FalseObjectProperty, value);
+    }
+
+    public static readonly DependencyProperty NullObjectProperty =
+        DependencyProperty.Register(nameof(NullObjectProperty), typeof(object), typeof(BooleanToObjectConverter), new PropertyMetadata(default));
+
+    public object NullObject
+    {
+        get => (object)GetValue(NullObjectProperty);
+        set => SetValue(NullObjectProperty, value);
+    }
 
     public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

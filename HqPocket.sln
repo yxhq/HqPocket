@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Dialogi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FD6FF945-72A1-4FA6-861C-61C2D2EE816A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Ports", "HqPocket.Extensions.Ports\HqPocket.Extensions.Ports.csproj", "{10526EDC-A259-4F57-97C7-CFEFAE379C05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Communications.Ports", "HqPocket.Extensions.Communications.Ports\HqPocket.Extensions.Communications.Ports.csproj", "{10526EDC-A259-4F57-97C7-CFEFAE379C05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{3677FE9D-CE17-4C2E-B2C5-75892019C36E}"
 EndProject
@@ -38,6 +38,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Localization.Wpf", "HqPocket.Extensions.Localization.Wpf\HqPocket.Extensions.Localization.Wpf.csproj", "{4FD80A29-8D56-4E41-AA1C-B3E9B1352F55}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Regioning.Wpf", "HqPocket.Extensions.Regioning.Wpf\HqPocket.Extensions.Regioning.Wpf.csproj", "{226B041B-64EB-4767-8CFA-823119FC14CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Logging.Wpf", "HqPocket.Extensions.Logging.Wpf\HqPocket.Extensions.Logging.Wpf.csproj", "{A16141EC-557E-4D4B-9A1B-8D6FB7E041B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.DevExpress.Test", "HqPocket.DevExpress.Test\HqPocket.DevExpress.Test.csproj", "{8B886FBA-5FD2-40C8-94AE-8CAC447405A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HqPocket.Extensions.Communications", "HqPocket.Extensions.Communications\HqPocket.Extensions.Communications.csproj", "{AFBD814F-B5A1-49D8-BA17-7B546E66209D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HqPocket.Extensions.Communications.Sockets", "HqPocket.Extensions.Communications.Sockets\HqPocket.Extensions.Communications.Sockets.csproj", "{CC459AED-05F0-40AB-B9F1-45A767C63223}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +109,22 @@ Global
 		{226B041B-64EB-4767-8CFA-823119FC14CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226B041B-64EB-4767-8CFA-823119FC14CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226B041B-64EB-4767-8CFA-823119FC14CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16141EC-557E-4D4B-9A1B-8D6FB7E041B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16141EC-557E-4D4B-9A1B-8D6FB7E041B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16141EC-557E-4D4B-9A1B-8D6FB7E041B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16141EC-557E-4D4B-9A1B-8D6FB7E041B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B886FBA-5FD2-40C8-94AE-8CAC447405A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B886FBA-5FD2-40C8-94AE-8CAC447405A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B886FBA-5FD2-40C8-94AE-8CAC447405A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B886FBA-5FD2-40C8-94AE-8CAC447405A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFBD814F-B5A1-49D8-BA17-7B546E66209D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBD814F-B5A1-49D8-BA17-7B546E66209D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBD814F-B5A1-49D8-BA17-7B546E66209D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBD814F-B5A1-49D8-BA17-7B546E66209D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC459AED-05F0-40AB-B9F1-45A767C63223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC459AED-05F0-40AB-B9F1-45A767C63223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC459AED-05F0-40AB-B9F1-45A767C63223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC459AED-05F0-40AB-B9F1-45A767C63223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +144,9 @@ Global
 		{5B93ADD0-2610-44C8-A63F-270FEED125E0} = {3677FE9D-CE17-4C2E-B2C5-75892019C36E}
 		{4FD80A29-8D56-4E41-AA1C-B3E9B1352F55} = {3677FE9D-CE17-4C2E-B2C5-75892019C36E}
 		{226B041B-64EB-4767-8CFA-823119FC14CB} = {3677FE9D-CE17-4C2E-B2C5-75892019C36E}
+		{A16141EC-557E-4D4B-9A1B-8D6FB7E041B9} = {3677FE9D-CE17-4C2E-B2C5-75892019C36E}
+		{AFBD814F-B5A1-49D8-BA17-7B546E66209D} = {3677FE9D-CE17-4C2E-B2C5-75892019C36E}
+		{CC459AED-05F0-40AB-B9F1-45A767C63223} = {3677FE9D-CE17-4C2E-B2C5-75892019C36E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C297532-B197-4B9B-9637-D40175945369}

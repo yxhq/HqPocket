@@ -4,8 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<SignAssembly>true</SignAssembly>
-		<AssemblyVersion>6.1.0.0</AssemblyVersion>
-		<FileVersion>6.1.0.0</FileVersion>
+		<AssemblyVersion>6.2.1.0</AssemblyVersion>
+		<FileVersion>6.2.1.0</FileVersion>
 		<AssemblyOriginatorKeyFile>..\Key.snk</AssemblyOriginatorKeyFile>
 		<Authors>HqPocket</Authors>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -13,7 +13,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>		
 		<RepositoryUrl>https://github.com/yxhq/HqPocket</RepositoryUrl>
 		<Authors>ZHQ</Authors>
-		<Version>6.1.0</Version>
+		<Version>6.2.1</Version>
 		<PackageOutputPath>..\..\HqPackages</PackageOutputPath>
 	</PropertyGroup>
 
@@ -29,7 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="EPPlus" Version="6.1.2" />
+		<PackageReference Include="EPPlus" Version="6.2.6" />
 	</ItemGroup>
 
 	<ItemGroup>

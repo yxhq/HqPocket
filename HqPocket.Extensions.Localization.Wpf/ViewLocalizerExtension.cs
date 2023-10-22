@@ -1,6 +1,7 @@
 ﻿using HqPocket.Wpf.Helpers;
 
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,8 +28,7 @@ public class ViewLocalizerExtension : MarkupExtension
         set => _proxy.SetValue(KeyProperty, value);
     }
 
-    public ViewLocalizerExtension(object key)
-        : this()
+    public ViewLocalizerExtension(object key) : this()
     {
         Key = key;
     }
@@ -47,6 +47,8 @@ public class ViewLocalizerExtension : MarkupExtension
         if (service.TargetObject is not DependencyObject targetObject) return this;
         if (service.TargetProperty is not DependencyProperty) return this;
 
+        if ((bool)DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue) return Key;
+
         var bindingKey = Key switch
         {
             string key => key,
@@ -59,34 +61,39 @@ public class ViewLocalizerExtension : MarkupExtension
         var resourceType = ResourceType switch
         {
             Type type => type,
-            null when (serviceProvider as IRootObjectProvider)?.RootObject is DependencyObject dpObj => dpObj.DependencyObjectType.SystemType,
-            null when targetObject is FrameworkElement element => element.DataContext is not null ? element.DataContext.GetType() : element.TryFindParent<UserControl>()?.GetType(),
+            null when serviceProvider is IRootObjectProvider { RootObject: DependencyObject dpObj } => dpObj.DependencyObjectType.SystemType,
+            null when targetObject is FrameworkElement element => element.TryFindParent<UserControl>()?.GetType(),
+            null when targetObject is FrameworkContentElement element => element.TryFindParent<UserControl>()?.GetType(),
             _ => null
         };
-        if (resourceType is null) return string.Empty;
 
-        var localizerFactory = Ioc.GetRequiredService<INotifiedStringLocalizerFactory>();
-        var localizer = localizerFactory.Create(resourceType);
-        if (localizer[$"{bindingKey}"].ResourceNotFound)
+        if (resourceType is not null)
         {
-            var assembly = resourceType.Assembly;
-            var sharedResourceTypeName = $"{assembly.GetName().Name}.{Conventions.ResourceDirectory}.{Conventions.SharedResourceName}";
-            var sharedResourceType = assembly.GetType(sharedResourceTypeName);
-            if (sharedResourceType is not null)
+            var localizerFactory = Ioc.GetRequiredService<INotifiedStringLocalizerFactory>();
+            var localizer = localizerFactory.Create(resourceType);
+            if (localizer[$"{bindingKey}"].ResourceNotFound)
             {
-                localizer = localizerFactory.Create(sharedResourceType);
+                var assembly = resourceType.Assembly;
+                var sharedResourceTypeName = $"{assembly.GetName().Name}.{Conventions.ResourceDirectory}.{Conventions.SharedResourceName}";
+                resourceType = assembly.GetType(sharedResourceTypeName);
+                if (resourceType is not null)
+                {
+                    localizer = localizerFactory.Create(resourceType);
+                }
             }
+
+            Binding binding = new($"[{bindingKey}].Value")
+            {
+                Source = localizer,
+                UpdateSourceTrigger = UpdateSourceTrigger.Explicit,
+                Mode = Mode,
+                Converter = Converter,
+                ConverterParameter = ConverterParameter
+            };
+
+            return binding.ProvideValue(serviceProvider);
         }
 
-        Binding binding = new($"[{bindingKey}]")
-        {
-            Source = localizer,
-            UpdateSourceTrigger = UpdateSourceTrigger.Explicit,
-            Mode = Mode,
-            Converter = Converter,
-            ConverterParameter = ConverterParameter
-        };
-
-        return binding.ProvideValue(serviceProvider);
+        return $"[{bindingKey}]";
     }
 }

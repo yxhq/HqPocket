@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="HqPocket.Test.Views.OptionsMonitorTestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:hq="http://hqpocket.com"
+             xmlns:local="clr-namespace:HqPocket.Test.Views"
+             hq:ViewModelLocator.AutoWireViewModel="True">
+
+    <StackPanel>
+        <StackPanel DataContext="{Binding AppSettings}">
+            <TextBox Text="{Binding AppName}"
+                     Margin="5"
+                     IsEnabled="False" />
+            <TextBox Text="{Binding ProcessCount}"
+                     Margin="5"
+                     IsEnabled="False" />
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

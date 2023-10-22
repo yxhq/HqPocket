@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HqPocket.IO;
 
-public class TextDataWriter<T> : DataReaderWriterBase<T>, IDataWriter<T> where T : class, new()
+public class TextDataWriter<T> : DataReaderWriterBase<T>, IDataWriter<T> where T : class
 {
     private bool _disposed;
     private StreamWriter? _streamWriter;

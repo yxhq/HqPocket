@@ -1,5 +1,4 @@
-﻿using HqPocket.Mvvm;
-
+﻿using HqPocket.Mvvm.ComponentModel;
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
